@@ -1,24 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { meta } from "@/lib/meta";
+import { AboutIntro, Blog, Chef, CtaNewsletter, Features, Hero, Philosophy, Reservation, Signatures, Story, Testimonials } from "@/components/site/sections";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => meta("Cafe Khumaar — Rooftop Café in Nazimabad, Karachi", "Stay High on Flavor. Open-air rooftop café on the 6th floor in Nazimabad, Karachi — Continental, Desi BBQ, pizza and karak chai till 3 AM."),
+  component: () => (
+    <>
+      <Hero /><AboutIntro /><Story /><Philosophy /><Signatures /><Features /><Chef /><Testimonials /><Reservation /><Blog /><CtaNewsletter />
+    </>
+  ),
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
