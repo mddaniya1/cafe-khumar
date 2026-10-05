@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AppointmentRouteImport } from './routes/appointment'
+import { Route as ChefRouteImport } from './routes/chef'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as MenuRouteImport } from './routes/menu'
+import { Route as BlogsIndexRouteImport } from './routes/blogs.index'
+import { Route as BlogsSlugRouteImport } from './routes/blogs.$slug'
+import { Route as PortfolioIndexRouteImport } from './routes/portfolio.index'
+import { Route as PortfolioSlugRouteImport } from './routes/portfolio.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppointmentRoute = AppointmentRouteImport.update({
+  id: '/appointment',
+  path: '/appointment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChefRoute = ChefRouteImport.update({
+  id: '/chef',
+  path: '/chef',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MenuRoute = MenuRouteImport.update({
+  id: '/menu',
+  path: '/menu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogsIndexRoute = BlogsIndexRouteImport.update({
+  id: '/blogs/',
+  path: '/blogs/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogsSlugRoute = BlogsSlugRouteImport.update({
+  id: '/blogs/$slug',
+  path: '/blogs/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortfolioIndexRoute = PortfolioIndexRouteImport.update({
+  id: '/portfolio/',
+  path: '/portfolio/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortfolioSlugRoute = PortfolioSlugRouteImport.update({
+  id: '/portfolio/$slug',
+  path: '/portfolio/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/appointment': typeof AppointmentRoute
+  '/chef': typeof ChefRoute
+  '/contact': typeof ContactRoute
+  '/menu': typeof MenuRoute
+  '/blogs/$slug': typeof BlogsSlugRoute
+  '/portfolio/$slug': typeof PortfolioSlugRoute
+  '/blogs/': typeof BlogsIndexRoute
+  '/portfolio/': typeof PortfolioIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/appointment': typeof AppointmentRoute
+  '/chef': typeof ChefRoute
+  '/contact': typeof ContactRoute
+  '/menu': typeof MenuRoute
+  '/blogs/$slug': typeof BlogsSlugRoute
+  '/portfolio/$slug': typeof PortfolioSlugRoute
+  '/blogs': typeof BlogsIndexRoute
+  '/portfolio': typeof PortfolioIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/appointment': typeof AppointmentRoute
+  '/chef': typeof ChefRoute
+  '/contact': typeof ContactRoute
+  '/menu': typeof MenuRoute
+  '/blogs/$slug': typeof BlogsSlugRoute
+  '/portfolio/$slug': typeof PortfolioSlugRoute
+  '/blogs/': typeof BlogsIndexRoute
+  '/portfolio/': typeof PortfolioIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/appointment'
+    | '/chef'
+    | '/contact'
+    | '/menu'
+    | '/blogs/$slug'
+    | '/portfolio/$slug'
+    | '/blogs/'
+    | '/portfolio/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/appointment'
+    | '/chef'
+    | '/contact'
+    | '/menu'
+    | '/blogs/$slug'
+    | '/portfolio/$slug'
+    | '/blogs'
+    | '/portfolio'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/appointment'
+    | '/chef'
+    | '/contact'
+    | '/menu'
+    | '/blogs/$slug'
+    | '/portfolio/$slug'
+    | '/blogs/'
+    | '/portfolio/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AppointmentRoute: typeof AppointmentRoute
+  ChefRoute: typeof ChefRoute
+  ContactRoute: typeof ContactRoute
+  MenuRoute: typeof MenuRoute
+  BlogsSlugRoute: typeof BlogsSlugRoute
+  PortfolioSlugRoute: typeof PortfolioSlugRoute
+  BlogsIndexRoute: typeof BlogsIndexRoute
+  PortfolioIndexRoute: typeof PortfolioIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +169,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/appointment': {
+      id: '/appointment'
+      path: '/appointment'
+      fullPath: '/appointment'
+      preLoaderRoute: typeof AppointmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chef': {
+      id: '/chef'
+      path: '/chef'
+      fullPath: '/chef'
+      preLoaderRoute: typeof ChefRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/menu': {
+      id: '/menu'
+      path: '/menu'
+      fullPath: '/menu'
+      preLoaderRoute: typeof MenuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blogs/': {
+      id: '/blogs/'
+      path: '/blogs'
+      fullPath: '/blogs/'
+      preLoaderRoute: typeof BlogsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blogs/$slug': {
+      id: '/blogs/$slug'
+      path: '/blogs/$slug'
+      fullPath: '/blogs/$slug'
+      preLoaderRoute: typeof BlogsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portfolio/': {
+      id: '/portfolio/'
+      path: '/portfolio'
+      fullPath: '/portfolio/'
+      preLoaderRoute: typeof PortfolioIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portfolio/$slug': {
+      id: '/portfolio/$slug'
+      path: '/portfolio/$slug'
+      fullPath: '/portfolio/$slug'
+      preLoaderRoute: typeof PortfolioSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AppointmentRoute: AppointmentRoute,
+  ChefRoute: ChefRoute,
+  ContactRoute: ContactRoute,
+  MenuRoute: MenuRoute,
+  BlogsSlugRoute: BlogsSlugRoute,
+  PortfolioSlugRoute: PortfolioSlugRoute,
+  BlogsIndexRoute: BlogsIndexRoute,
+  PortfolioIndexRoute: PortfolioIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
