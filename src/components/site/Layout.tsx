@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
 import { ChevronDown, Mail, MapPin, Menu as MenuIcon, X, Instagram, Facebook } from "lucide-react";
 import { site } from "@/lib/site-config";
+import logoAsset from "@/assets/cafe-khumaar-logo.png.asset.json";
 
 const pages = [
   { to: "/portfolio", label: "Portfolio" },
@@ -11,9 +12,8 @@ const pages = [
 
 function Logo() {
   return (
-    <Link to="/" className="flex flex-col items-center leading-none" aria-label="Cafe Khumaar home">
-      <span className="grid h-11 w-11 place-items-center rounded-full border border-gold font-serif text-lg text-gold">K</span>
-      <span className="mt-1 font-serif text-3xl">Khumaar</span>
+    <Link to="/" className="flex shrink-0 items-center" aria-label="Cafe Khumaar home">
+      <img src={logoAsset.url} alt="Cafe Khumaar" width={350} height={423} className="h-12 w-auto" />
     </Link>
   );
 }
@@ -35,13 +35,14 @@ function Header() {
           <a href={site.mapsUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-gold"><MapPin className="h-4 w-4" />{site.shortAddress}</a>
         </div>
       </div>
-      <nav className="container-site flex items-center justify-between py-4 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-14">
-        <div className="hidden items-center justify-end gap-12 lg:flex">
+      <nav className="container-site flex items-center justify-between gap-8 py-4">
+        <Logo />
+        <div className="hidden items-center gap-10 lg:flex xl:gap-12">
           <Link to="/" className={link}>Home</Link>
           <Link to="/menu" className={link}>Menu</Link>
           <div className="relative" onMouseEnter={() => setDd(true)} onMouseLeave={() => setDd(false)}>
             <button className={`${link} flex items-center gap-1`} onClick={() => setDd(!dd)}>Pages <ChevronDown className="h-4 w-4" /></button>
-            <div className={`absolute left-0 top-full pt-4 transition-all ${dd ? "visible translate-y-0 opacity-100" : "invisible translate-y-2 opacity-0"}`}>
+            <div className={`absolute right-0 top-full pt-4 transition-all ${dd ? "visible translate-y-0 opacity-100" : "invisible translate-y-2 opacity-0"}`}>
               <div className="min-w-48 bg-cream p-2 text-cream-foreground">
                 {[{ to: "/about", label: "About Us" }, { to: "/chef", label: "Chef" }, { to: "/appointment", label: "Reservation" }].map((p) => (
                   <Link key={p.to} to={p.to} className="block px-4 py-2 text-sm uppercase tracking-wider hover:text-gold">{p.label}</Link>
@@ -49,9 +50,6 @@ function Header() {
               </div>
             </div>
           </div>
-        </div>
-        <Logo />
-        <div className="hidden items-center gap-12 lg:flex">
           {pages.map((p) => <Link key={p.to} to={p.to} className={link}>{p.label}</Link>)}
         </div>
         <button className="lg:hidden" aria-label="Open menu" onClick={() => setOpen(true)}><MenuIcon className="h-7 w-7" /></button>
