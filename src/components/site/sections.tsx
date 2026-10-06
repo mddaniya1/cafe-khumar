@@ -112,7 +112,7 @@ export function Philosophy() {
   );
 }
 
-const sideImgs = [dishes[0].img, dishes[1].img, dishes[2].img, dishes[3].img];
+const sideImgs = [dishes[0]!.img, dishes[1]!.img, dishes[2]!.img, dishes[3]!.img];
 export function MenuList({ withImages = true }: { withImages?: boolean }) {
   return (
     <div className="space-y-20">
@@ -203,13 +203,13 @@ export function Testimonials() {
   const n = testimonials.length;
   const start = useRef(0);
   useEffect(() => { const t = setInterval(() => setI((v) => (v + 1) % n), 6000); return () => clearInterval(t); }, [n, i]);
-  const t = testimonials[i];
+  const t = testimonials[i]!;
   return (
     <section className="section-pad container-site text-center">
       <p className="eyebrow">Guest words · placeholder</p>
       <div className="relative mx-auto mt-10 max-w-4xl"
-        onTouchStart={(e) => (start.current = e.touches[0].clientX)}
-        onTouchEnd={(e) => { const d = e.changedTouches[0].clientX - start.current; if (Math.abs(d) > 40) setI((v) => (v + (d < 0 ? 1 : n - 1)) % n); }}>
+        onTouchStart={(e) => (start.current = e.touches[0]!.clientX)}
+        onTouchEnd={(e) => { const d = e.changedTouches[0]!.clientX - start.current; if (Math.abs(d) > 40) setI((v) => (v + (d < 0 ? 1 : n - 1)) % n); }}>
         <Ornament className="mx-auto" />
         <div key={i} className="animate-fade-in">
           <p className="mt-8 hidden font-serif text-[clamp(28px,3vw,44px)] leading-snug md:block">"{t.quote}"</p>
@@ -321,7 +321,7 @@ export function CtaNewsletter() {
       </section>
       <section className="section-pad container-site">
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.4fr_1fr]">
-          <Reveal><img src={dishes[3].img} alt="" loading="lazy" className="aspect-[3/4] w-full object-cover" /></Reveal>
+          <Reveal><img src={dishes[3]!.img} alt="" loading="lazy" className="aspect-[3/4] w-full object-cover" /></Reveal>
           <Reveal delay={100} className="text-center">
             <p className="eyebrow">Latest Stories</p>
             <h2 className="h2-display mt-5">Join the Khumaar list</h2>
@@ -339,7 +339,7 @@ export function CtaNewsletter() {
               </form>
             )}
           </Reveal>
-          <Reveal delay={200}><img src={dishes[1].img} alt="" loading="lazy" className="aspect-[3/4] w-full object-cover lg:mt-24" /></Reveal>
+          <Reveal delay={200}><img src={dishes[1]!.img} alt="" loading="lazy" className="aspect-[3/4] w-full object-cover lg:mt-24" /></Reveal>
         </div>
       </section>
     </>
