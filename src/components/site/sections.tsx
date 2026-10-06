@@ -119,14 +119,14 @@ export function MenuList({ withImages = true }: { withImages?: boolean }) {
       {menu.map((block, bi) => (
         <div key={block.category}>
           <div className="grid gap-8 border-t pt-10 lg:grid-cols-[1fr_2fr]">
-            <Reveal><h3 className="text-3xl md:text-4xl">{block.category}</h3></Reveal>
+            <Reveal><h3 className="text-3xl md:text-4xl"><span className="mr-3 text-2xl md:text-3xl">{block.emoji}</span>{block.category}</h3></Reveal>
             <div className="divide-y">
               {block.items.map((it, i) => (
                 <Reveal key={it.name} delay={i * 60} className="py-6 first:pt-0">
                   <div className="flex items-baseline gap-4">
                     <h4 className="text-2xl">{it.name}</h4>
                     <span className="flex-1 border-b border-dotted" />
-                    <span className="text-gold" title="Price to be confirmed">Rs. —</span>
+                    <span className="whitespace-nowrap text-gold">{it.price}</span>
                   </div>
                   <p className="mt-2 text-muted-foreground">{it.desc}</p>
                 </Reveal>
@@ -149,7 +149,7 @@ export function Signatures() {
   return (
     <section className="section-pad border-t container-site">
       <SectionHead eyebrow="Khumaar Signatures" title="Flavors Worth Staying For" center>
-        <p>From midnight burgers to smoky boti and a final glass of karak — here's what keeps our tables full. Prices are confirmed at the café.</p>
+        <p>From midnight burgers to smoky boti and a final glass of karak — here's what keeps our tables full. All prices in PKR.</p>
       </SectionHead>
       <div className="mt-20"><MenuList /></div>
       <div className="mt-16 text-center"><RollButton to="/menu">View All Menu</RollButton></div>
