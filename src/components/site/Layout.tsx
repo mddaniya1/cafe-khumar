@@ -13,7 +13,7 @@ const pages = [
 function Logo() {
   return (
     <Link to="/" className="flex shrink-0 items-center" aria-label="Cafe Khumaar home">
-      <img src={logoAsset.url} alt="Cafe Khumaar" width={350} height={423} className="h-12 w-auto" />
+      <img src={logoAsset.url} alt="Cafe Khumaar" width={350} height={423} className="h-16 w-auto" />
     </Link>
   );
 }
@@ -36,8 +36,7 @@ function Header() {
         </div>
       </div>
       <nav className="container-site flex items-center justify-between gap-8 py-4">
-        <Logo />
-        <div className="hidden items-center gap-10 lg:flex xl:gap-12">
+        <div className="hidden flex-1 items-center justify-end gap-10 lg:flex xl:gap-12">
           <Link to="/" className={link}>Home</Link>
           <Link to="/menu" className={link}>Menu</Link>
           <div className="relative" onMouseEnter={() => setDd(true)} onMouseLeave={() => setDd(false)}>
@@ -50,6 +49,10 @@ function Header() {
               </div>
             </div>
           </div>
+        </div>
+        <span className="w-7 shrink-0 lg:hidden" aria-hidden="true" />
+        <Logo />
+        <div className="hidden flex-1 items-center gap-10 lg:flex xl:gap-12">
           {pages.map((p) => <Link key={p.to} to={p.to} className={link}>{p.label}</Link>)}
         </div>
         <button className="lg:hidden" aria-label="Open menu" onClick={() => setOpen(true)}><MenuIcon className="h-7 w-7" /></button>
