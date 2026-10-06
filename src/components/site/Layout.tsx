@@ -86,7 +86,7 @@ function Footer() {
         </div>
         <div>
           <p className={h}>Menu</p>
-          {[["/", "Home"], ["/about", "About Us"], ["/contact", "Contact"], ["/portfolio", "Portfolio"], ["/chef", "Chef"], ["/blogs", "Blogs"]].map(([to, l]) => (
+          {([["/", "Home"], ["/about", "About Us"], ["/contact", "Contact"], ["/portfolio", "Portfolio"], ["/chef", "Chef"], ["/blogs", "Blogs"]] as const).map(([to, l]) => (
             <Link key={to} to={to} className="block py-1 text-muted-foreground hover:text-gold">{l}</Link>
           ))}
         </div>
